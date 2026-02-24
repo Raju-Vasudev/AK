@@ -1,0 +1,34 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg'],
+      manifest: {
+        name: 'PaisaBuddy Local PWA',
+        short_name: 'PaisaBuddy',
+        description: 'Local-first personal finance tracker',
+        theme_color: '#111827',
+        background_color: '#ffffff',
+        display: 'standalone',
+        start_url: '/',
+        icons: [
+          {
+            src: '/favicon.svg',
+            sizes: '192x192',
+            type: 'image/svg+xml'
+          },
+          {
+            src: '/favicon.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml'
+          }
+        ]
+      }
+    })
+  ]
+});

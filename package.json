@@ -1,0 +1,15 @@
+{
+  "name": "paisabuddy-pwa",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^2.8.1",
+    "typescript": "^5.8.3"
+  }
+}

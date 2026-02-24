@@ -1,0 +1,33 @@
+node_modules/
+
+# Build outputs
+dist/
+build/
+.turbo/
+
+# TypeScript build artifacts
+*.tsbuildinfo
+
+# Generated JS from local tsc runs
+apps/**/src/**/*.js
+apps/**/src/**/*.js.map
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
