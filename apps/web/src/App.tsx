@@ -1,23 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { FormEvent } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import type {
   AppState,
-  Budget,
-  Liability,
-  Transaction,
   UserProfile
-} from '@arthikasankhyana/domain';
-import {
-  calculateBudgetRemaining,
-  calculateLiabilityPaid
 } from '@arthikasankhyana/domain';
 import type { GoogleIdTokenPayload } from './auth/types';
 
 const STORAGE_KEY = 'arthikasankhyana.local.state.v1';
-
-type AppFormEvent = FormEvent<HTMLFormElement>;
 
 function createId(prefix: string): string {
   return `${prefix}_${crypto.randomUUID()}`;
@@ -61,14 +51,6 @@ export default function App({ googleAuthEnabled }: AppProps) {
   );
 
   const [profileName, setProfileName] = useState('');
-  const [budgetName, setBudgetName] = useState('');
-  const [budgetAmount, setBudgetAmount] = useState<number>(0);
-  const [txnBudgetId, setTxnBudgetId] = useState('');
-  const [txnAmount, setTxnAmount] = useState<number>(0);
-  const [txnType, setTxnType] = useState<'expense' | 'income'>('expense');
-  const [liabilityName, setLiabilityName] = useState('');
-  const [liabilityAmount, setLiabilityAmount] = useState<number>(0);
-
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state]);
@@ -125,39 +107,64 @@ export default function App({ googleAuthEnabled }: AppProps) {
 
   return (
     <div className="page">
-      <header className="header">
-        <h1>ArthikaSankhyana Local PWA</h1>
-        <p>{authMessage}</p>
-        {!state.profile ? (
-          <div>
-            {googleAuthEnabled ? (
-              <GoogleLogin onSuccess={onGoogleCredential} onError={() => setAuthMessage('Google sign-in failed.')} />
-            ) : (
-              <p>Set up `apps/web/.env` from `.env.example` and restart to enable Gmail sign-in.</p>
-            )}
-            <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '8px' }}>
-              Not signed in. All features hidden until you sign in.
-            </p>
-          </div>
-        ) : (
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', justifyContent: 'space-between' }}>
-            <p style={{ margin: 0 }}>Signed in as {state.profile.email}</p>
-            <button onClick={handleSignOut}>Sign Out</button>
-          </div>
-        )}
-      </header>
+      <aside className="ds-sidebar">
+        <div className="ds-brand">
+          <div className="ds-brand-mark">A</div>
+          <div className="ds-brand-name">ArthikaSankhyana</div>
+        </div>
+        <div>
+          <div className="ds-nav-title">System</div>
+          <a className="ds-nav-link ds-nav-link-active" href="#" aria-current="page">
+            Identity
+          </a>
+          <a className="ds-nav-link" href="#">
+            Foundation
+          </a>
+          <a className="ds-nav-link" href="#">
+            Layout
+          </a>
+        </div>
+      </aside>
 
-      {state.profile && (
-        <section className="card-grid">
-          <article className="card">
-            <h2>Welcome, {state.profile.fullName}!</h2>
-            <p>Your budget and transaction features will be implemented in the next phase.</p>
-            <p style={{ fontSize: '0.875rem', color: '#6b7280' }}>
-              Profile data is stored locally in this browser only.
-            </p>
-          </article>
-        </section>
-      )}
+      <main className="ds-main">
+        <header className="header">
+          <div className="ds-badge">Design Language</div>
+          <h1>ArthikaSankhyana Local PWA</h1>
+          <p>{authMessage}</p>
+
+          {!state.profile ? (
+            <div className="ds-auth-row">
+              {googleAuthEnabled ? (
+                <GoogleLogin onSuccess={onGoogleCredential} onError={() => setAuthMessage('Google sign-in failed.')} />
+              ) : (
+                <p>Set up apps/web/.env from .env.example and restart to enable Gmail sign-in.</p>
+              )}
+              <p className="ds-meta">Not signed in. All features hidden until you sign in.</p>
+            </div>
+          ) : (
+            <div className="ds-auth-row">
+              <p>Signed in as {state.profile.email}</p>
+              <button onClick={handleSignOut}>Sign Out</button>
+            </div>
+          )}
+        </header>
+
+        {state.profile && (
+          <section className="card-grid">
+            <article className="card">
+              <h2>Welcome, {state.profile.fullName}!</h2>
+              <p>Your budget and transaction features will be implemented in the next phase.</p>
+              <p className="ds-meta">Profile data is stored locally in this browser only.</p>
+            </article>
+            <article className="card">
+              <h2>Snapshot</h2>
+              <p>Total allocated: ₹{totals.totalAllocated.toLocaleString('en-IN')}</p>
+              <p>Total spent: ₹{totals.totalSpent.toLocaleString('en-IN')}</p>
+              <p>Remaining: ₹{totals.totalRemaining.toLocaleString('en-IN')}</p>
+            </article>
+          </section>
+        )}
+      </main>
     </div>
   );
 }
