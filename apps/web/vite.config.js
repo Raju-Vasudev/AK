@@ -8,8 +8,8 @@ export default defineConfig({
             registerType: 'autoUpdate',
             includeAssets: ['favicon.svg'],
             manifest: {
-                name: 'BudgetBuddy Local PWA',
-                short_name: 'BudgetBuddy',
+                name: 'ArthikaSankhyana Local PWA',
+                short_name: 'ArthikaSankhyana',
                 description: 'Local-first personal finance tracker',
                 theme_color: '#111827',
                 background_color: '#ffffff',

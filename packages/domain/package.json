@@ -1,5 +1,5 @@
 {
-  "name": "@paisabuddy/domain",
+  "name": "@arthikasankhyana/domain",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -14,3 +14,4 @@
     "typescript": "^5.9.2"
   }
 }
+

@@ -8,14 +8,14 @@ import type {
   Liability,
   Transaction,
   UserProfile
-} from '@paisabuddy/domain';
+} from '@arthikasankhyana/domain';
 import {
   calculateBudgetRemaining,
   calculateLiabilityPaid
-} from '@paisabuddy/domain';
+} from '@arthikasankhyana/domain';
 import type { GoogleIdTokenPayload } from './auth/types';
 
-const STORAGE_KEY = 'paisabuddy.local.state.v1';
+const STORAGE_KEY = 'arthikasankhyana.local.state.v1';
 
 type AppFormEvent = FormEvent<HTMLFormElement>;
 
@@ -126,7 +126,7 @@ export default function App({ googleAuthEnabled }: AppProps) {
   return (
     <div className="page">
       <header className="header">
-        <h1>PaisaBuddy Local PWA</h1>
+        <h1>ArthikaSankhyana Local PWA</h1>
         <p>{authMessage}</p>
         {!state.profile ? (
           <div>
@@ -161,3 +161,4 @@ export default function App({ googleAuthEnabled }: AppProps) {
     </div>
   );
 }
+

@@ -9,8 +9,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'PaisaBuddy Local PWA',
-        short_name: 'PaisaBuddy',
+        name: 'ArthikaSankhyana Local PWA',
+        short_name: 'ArthikaSankhyana',
         description: 'Local-first personal finance tracker',
         theme_color: '#111827',
         background_color: '#ffffff',
@@ -32,3 +32,4 @@ export default defineConfig({
     })
   ]
 });
+

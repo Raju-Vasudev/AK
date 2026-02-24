@@ -1,4 +1,4 @@
-# PaisaBuddy Web-First MVP (Zero-Backend)
+# ArthikaSankhyana Web-First MVP (Zero-Backend)
 
 This workspace starts the new app as a **React + TypeScript PWA** with **Gmail-only auth**, **local-only data storage**, and no custom backend server.
 
@@ -6,7 +6,7 @@ This workspace starts the new app as a **React + TypeScript PWA** with **Gmail-o
 
 ```bash
 pnpm install
-pnpm --filter @paisabuddy/web dev
+pnpm --filter @arthikasankhyana/web dev
 ```
 
 ## Environment
@@ -29,3 +29,4 @@ pnpm --filter @paisabuddy/web dev
 - Add restore-detection flow for existing users
 - Add manual backup file import
 - Harden validations and tests
+

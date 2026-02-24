@@ -1,4 +1,4 @@
-# PaisaBuddy Base Analysis & Zero-Backend Migration Tasks
+# ArthikaSankhyana Base Analysis & Zero-Backend Migration Tasks
 
 ## 1) What BudgetBuddy currently uses for auth
 
@@ -91,3 +91,4 @@ Current BudgetBuddy violates this because:
 ## 6) Started implementation in this folder
 
 A new workspace scaffold is being added under `mobile-mvp` as Step 1 toward the target web-first architecture.
+

@@ -17,7 +17,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@paisabuddy/domain':
+      '@arthikasankhyana/domain':
         specifier: workspace:*
         version: link:../../packages/domain
       '@react-oauth/google':
@@ -4171,3 +4171,4 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
       react: 19.2.4
+
